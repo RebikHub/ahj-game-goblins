@@ -1,7 +1,7 @@
 export default class GameGoblin {
   constructor() {
-    this.point = null;
-    this.goblins = null;
+    this.point = 0;
+    this.goblins = 0;
     this.randomNumber = null;
     this.gameField = null;
   }
@@ -20,6 +20,8 @@ export default class GameGoblin {
       cell.classList.add('game-cell');
       this.gameField.appendChild(cell);
     }
+    document.querySelector('.points').textContent = `Points: ${this.point}`;
+    document.querySelector('.goblin').textContent = `Missed the goblins: ${this.goblins}`;
   }
 
   winOrLose() {

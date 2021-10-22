@@ -12,6 +12,6 @@ app.getRandomPicture(completeField);
 
 setInterval(() => {
   app.getRandomPicture(completeField);
-}, 1000);
+}, 1500);
 
 app.gameClick(completeField);
