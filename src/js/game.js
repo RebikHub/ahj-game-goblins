@@ -14,6 +14,7 @@ export default class GameGoblin {
     points.classList.add('points', 'points');
     this.gameField.insertAdjacentElement('afterend', points);
     points.insertAdjacentElement('afterend', goblin);
+    this.gameField.classList.add('cursor');
 
     for (let i = 1; i < 17; i += 1) {
       const cell = document.createElement('div');
@@ -45,9 +46,6 @@ export default class GameGoblin {
         this.winOrLose();
         document.querySelector('.goblin').textContent = `Missed the goblins: ${this.goblins}`;
       }
-      if (elem.classList.contains('cursor')) {
-        elem.classList.remove('cursor');
-      }
     });
 
     let random = Math.floor(Math.random() * field.length);
@@ -68,11 +66,14 @@ export default class GameGoblin {
     field.forEach((elem) => {
       elem.addEventListener('click', () => {
         if (elem.classList.contains('picture')) {
-          elem.classList.add('cursor');
           elem.classList.remove('picture');
           this.point += 1;
           this.winOrLose();
           document.querySelector('.points').textContent = `Points: ${this.point}`;
+        } else if (!elem.classList.contains('picture')) {
+          this.goblins += 1;
+          this.winOrLose();
+          document.querySelector('.goblin').textContent = `Missed the goblins: ${this.goblins}`;
         }
       });
     });
